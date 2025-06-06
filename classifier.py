@@ -25,3 +25,12 @@ clf.fit(X_train_vectorized, y_train)
 # --> 0.9376479873717443
 print((len(y_test) * 0.9376479873717443), " / ", len(y_test))
 
+
+while True:
+    user_input = input("\nEnter a news article (or type 'exit' to quit):\n")
+    if user_input.lower() == 'exit':
+        break
+    user_input_vectorized = vectorizer.transform([user_input])
+    prediction = clf.predict(user_input_vectorized)[0]
+    result = "FAKE" if prediction == 1 else "REAL"
+    print(f"\nPrediction: This news article is {result}.")
